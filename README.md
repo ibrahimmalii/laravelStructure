@@ -1,1 +1,1 @@
-# laravelStructure
+# laravel-structure
