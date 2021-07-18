@@ -8,7 +8,7 @@ create
 
 <form class="mt-5" action="" method="">
 <!-- we need to write it after any post form  -->
-@csrf;
+@csrf
 
 <p class="h3 text-center mb-3 text-warning">Edit Your Post From Here</p>
   <div  class="form-group">

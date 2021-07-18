@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\postController;
+use App\Http\Controllers\testController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,9 @@ Route::get('/', function () {
 // we need to use controller
 // we need to define show function into controller we use
 
-// Route::get( uri : '/controller' , action : [labonecontroller::class , 'show']);
+//this is first test in laravel
+Route::get( uri : '/controller' , action : [labonecontroller::class , 'show']);
+
 
 //we need to use route name
 Route::get('/posts' , [postController::class , 'index'])->name('posts.index'); // from here we call controller and we use view from controller
@@ -47,4 +50,8 @@ Route ::get('/posts/{post}' , [postController::class , 'show'])->name('posts.sho
 Route ::delete('/posts/{post}' , [postController::class , 'destroy'])->name('posts.destroy');
 
 Route ::get('/posts/{post}/edit' , [postController::class , 'edit'])->name('posts.edit');
+
+
+
+
 

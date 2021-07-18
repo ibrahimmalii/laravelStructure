@@ -16,11 +16,14 @@ create
   </div>
   <label for="titlePost" " class="h4 text-primary">Description</label>
   <textarea class="form-control mb-3" name="description" placeholder="write what you want" style=" resize:none;"></textarea>
-  <select class="form-control" name="createdBy">
-      <option value="ibrahim">ibrahim</option>
-      <option value="alaa">alaa</option>
-      <option value="ali">ali</option>
-  </select>
+
+    <select class="form-control" name="createdBy">
+
+      @foreach($users as $user)
+        <option value="{{$user->id}}">{{$user->name}}</option>
+      @endforeach
+
+    </select>
   <button type="submit" class="btn btn-primary mt-3">Add Your Post</button>
 </form>
 

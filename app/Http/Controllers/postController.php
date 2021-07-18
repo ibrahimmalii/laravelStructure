@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\User;
 
 class postController extends Controller
 {
@@ -28,7 +29,9 @@ class postController extends Controller
 
     public function create()
     {
-        return view ('posts.create');
+        $users = User::all();
+
+        return view ('posts.create' , ['users'=>$users]);
     }
 
     public function store()
@@ -40,9 +43,10 @@ class postController extends Controller
 
         // equal insert into
         Post::create([
-            'createdBy' => $requestData['createdBy'],
+            // 'createdBy' => $requestData['createdBy'],
             'title' => $requestData['title'],
-            'description' => $requestData['description']
+            'description' => $requestData['description'],
+            'user_id' => $requestData['createdBy'],
         ]);
         //now we add data into database;
 

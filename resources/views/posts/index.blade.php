@@ -31,15 +31,23 @@ index
         @foreach($allPostsData as $post)
         <tr>
         <th scope="row">{{$post->id}}</th>
-        <td>{{$post->createdBy}}</td>
+        <td>{{$post->user ? $post->user->name : 'not found'}}</td>
         <td>{{$post->title}}</td>
         <td>{{$post->description}}</td>
         <td>{{$post->created_at}}</td>
         <td>
         <!-- in here we need to pass parameter post in uri -->
-        <a href="{{route('posts.show' , ['post'=>$post->id])}}" class="btn btn-secondary mx-1">View</a>
-        <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
-        <a href="{{route('posts.destroy' , ['post'=>$post->id])}}" class="btn btn-danger mx-1">Delete</a>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12" >
+            <a href="{{route('posts.show' , ['post'=>$post->id])}}" class="btn btn-secondary mx-1">View</a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12" >
+            <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
+            </div>
+            <div class="col-lg-4 col-md-12 col-12">
+            <a href="{{route('posts.destroy' , ['post'=>$post->id])}}" class="btn btn-danger mx-1">Delete</a>
+            </div>
+        </div>
         </td>
         </tr>
         @endforeach
