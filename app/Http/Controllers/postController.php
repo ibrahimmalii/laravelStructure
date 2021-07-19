@@ -12,7 +12,10 @@ class postController extends Controller
 {
     public function index ()
     {
-        $allPostsData = Post::all();
+        // $allPostsData = Post::all();
+        $allPostsData = Post::paginate(5);
+
+        // $allPostsData = Post::pagination(4);
         // @dd($allPostsData);
         return view("posts.index" , ['allPostsData'=>$allPostsData]); // == posts/index
     }

@@ -51,6 +51,8 @@ index
         </td>
         </tr>
         @endforeach
+        <!-- to display pagination arrows -->
+        <!-- {{$allPostsData->links()}} -->
     </tbody>
 </table>
 @endsection
