@@ -29,4 +29,16 @@ class storePostRequest extends FormRequest
             'createdBy'=>['required'],
         ];
     }
+
+
+    public function messages()
+    {
+        return [
+                //to override error messages
+                'title.required'=>'you need to write something here',
+                'title.min'=>'you need to write more than three char'
+            ];
+    }
+
+
 }
