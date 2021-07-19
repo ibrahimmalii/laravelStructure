@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Http\Requests\storePostRequest;
 
 class postController extends Controller
 {
@@ -34,7 +35,8 @@ class postController extends Controller
         return view ('posts.create' , ['users'=>$users]);
     }
 
-    public function store(request $requestObj)
+    // public function store(request $requestObj)
+    public function store(storePostRequest $requestObj)
     {
 
         // we need to get all data we need to store
@@ -45,17 +47,17 @@ class postController extends Controller
         // dd($requestObj);
 
         //=============Validation========
-        $requestObj->validate([
-            // 'title'=>'required|min:5|max:20'
-            'title'=>['required' , 'min:5' , 'max:20'],
-            'description'=>['required' , 'min:5' , 'max:20'],
-            'createdBy'=>['required'],
+        // $requestObj->validate([ //==> we can put this validate into extract class and use it more
+        //     // 'title'=>'required|min:5|max:20'
+        //     'title'=>['required' , 'min:5' , 'max:20'],
+        //     'description'=>['required' , 'min:5' , 'max:20'],
+        //     'createdBy'=>['required'],
 
-        ],[
-            //to override error messages
-            'title.required'=>'you need to write something here',
-            'title.min'=>'you need to write more than three char'
-        ]);
+        // ],[
+        //     //to override error messages
+        //     'title.required'=>'you need to write something here',
+        //     'title.min'=>'you need to write more than three char'
+        // ]);
 
 
         // equal insert into
