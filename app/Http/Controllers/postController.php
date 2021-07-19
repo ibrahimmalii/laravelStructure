@@ -34,19 +34,43 @@ class postController extends Controller
         return view ('posts.create' , ['users'=>$users]);
     }
 
-    public function store()
+    public function store(request $requestObj)
     {
 
         // we need to get all data we need to store
-        $requestData = request()->all();
-        // dd($requestData);
+        // $requestData = request()->all();
+        // dd($requestData); //== dd($requestObj)
+
+        //========it's instance from request==========//
+        // dd($requestObj);
+
+        //=============Validation========
+        $requestObj->validate([
+            // 'title'=>'required|min:5|max:20'
+            'title'=>['required' , 'min:5' , 'max:20'],
+            'description'=>['required' , 'min:5' , 'max:20'],
+            'createdBy'=>['required'],
+
+        ],[
+            //to override error messages
+            'title.required'=>'you need to write something here',
+            'title.min'=>'you need to write more than three char'
+        ]);
+
 
         // equal insert into
         Post::create([
             // 'createdBy' => $requestData['createdBy'],
-            'title' => $requestData['title'],
-            'description' => $requestData['description'],
-            'user_id' => $requestData['createdBy'],
+            // 'title' => $requestData['title'],
+            // 'description' => $requestData['description'],
+            // 'user_id' => $requestData['createdBy'],
+
+
+
+
+            'title' => $requestObj->title,
+            'description' => $requestObj->description,
+            'user_id' => $requestObj->createdBy,
         ]);
         //now we add data into database;
 
