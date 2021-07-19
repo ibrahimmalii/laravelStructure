@@ -21,14 +21,14 @@ class postController extends Controller
     }
 
     // public function show($postId)
-    public function show()
+    public function show($id)
     {
         // return $postId;// now we print uri
         //to know dynamic uri we write or user write we can pass it into parameter and take it
 
+        $post = Post::find($id);
 
-
-        return view("posts.show");
+        return view("posts.show" , ['post'=>$post]);
     }
 
     public function create()
@@ -104,10 +104,11 @@ class postController extends Controller
 
 
     public function update(storePostRequest $request ,$id){
-        $post = Post::find($id)->update([
+        $postUpdated = Post::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
         ]);
+        // $postUpdated->save();
         return redirect()->route('posts.index');
     }
 
