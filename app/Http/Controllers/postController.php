@@ -89,8 +89,26 @@ class postController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('posts.edit');
+        //this is manual method for update
+        // $post = Post::find($id);
+        // $post->title = 'test update value';
+        // $post->save();
+        // @dd($post);
+
+        //second method
+        $post = Post::find($id);
+        return view('posts.edit' , ['post'=>$post]);
     }
+
+
+    public function update(storePostRequest $request ,$id){
+        $post = Post::find($id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+        return redirect()->route('posts.index');
+    }
+
 }

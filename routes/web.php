@@ -51,6 +51,7 @@ Route ::delete('/posts/{post}' , [postController::class , 'destroy'])->name('pos
 
 Route ::get('/posts/{post}/edit' , [postController::class , 'edit'])->name('posts.edit');
 
+Route::post('/posts/{post}' , [postController::class , 'update'])->name('posts.update');
 
 
 
