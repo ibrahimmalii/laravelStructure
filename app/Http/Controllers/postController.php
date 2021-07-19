@@ -54,7 +54,7 @@ class postController extends Controller
         //     // 'title'=>'required|min:5|max:20'
         //     'title'=>['required' , 'min:5' , 'max:20'],
         //     'description'=>['required' , 'min:5' , 'max:20'],
-        //     'createdBy'=>['required'],
+        //     'createdBy'=>['required' , 'exist:users,id'], //check if id exist or not
 
         // ],[
         //     //to override error messages

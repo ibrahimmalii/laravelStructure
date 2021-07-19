@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\postController;
 use App\Http\Controllers\testController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,24 +36,48 @@ Route::get('/', function () {
 // we need to define show function into controller we use
 
 //this is first test in laravel
-Route::get( uri : '/controller' , action : [labonecontroller::class , 'show']);
+// Route::get( uri : '/controller' , action : [labonecontroller::class , 'show']);
 
 
-//we need to use route name
-Route::get('/posts' , [postController::class , 'index'])->name('posts.index'); // from here we call controller and we use view from controller
+// //we need to use route name
+// Route::get('/posts' , [postController::class , 'index'])->name('posts.index'); // from here we call controller and we use view from controller
 
-Route ::get('/posts/create' , [postController::class , 'create'])->name('posts.create');
+// Route ::get('/posts/create' , [postController::class , 'create'])->name('posts.create');
 
-Route ::post('/posts' , [postController::class , 'store'])->name('posts.store');//this is submit button
+// Route ::post('/posts' , [postController::class , 'store'])->name('posts.store');//this is submit button
 
-Route ::get('/posts/{post}' , [postController::class , 'show'])->name('posts.show'); // this is to show or view (read from crud operation) ==> {}=>means dynamic uri
+// Route ::get('/posts/{post}' , [postController::class , 'show'])->name('posts.show'); // this is to show or view (read from crud operation) ==> {}=>means dynamic uri
 
-Route ::delete('/posts/{post}' , [postController::class , 'destroy'])->name('posts.destroy');
+// Route ::delete('/posts/{post}' , [postController::class , 'destroy'])->name('posts.destroy');
 
-Route ::get('/posts/{post}/edit' , [postController::class , 'edit'])->name('posts.edit');
+// Route ::get('/posts/{post}/edit' , [postController::class , 'edit'])->name('posts.edit');
 
-Route::post('/posts/{post}' , [postController::class , 'update'])->name('posts.update');
+// Route::post('/posts/{post}' , [postController::class , 'update'])->name('posts.update');
+
+Route::group(['middleware'=> 'auth'], function(){
+
+    Route::get( uri : '/controller' , action : [labonecontroller::class , 'show']);
+
+    //we need to use route name
+    Route::get('/posts' , [postController::class , 'index'])->name('posts.index'); // from here we call controller and we use view from controller
+
+    Route ::get('/posts/create' , [postController::class , 'create'])->name('posts.create');
+
+    Route ::post('/posts' , [postController::class , 'store'])->name('posts.store');//this is submit button
+
+    Route ::get('/posts/{post}' , [postController::class , 'show'])->name('posts.show'); // this is to show or view (read from crud operation) ==> {}=>means dynamic uri
+
+    Route ::delete('/posts/{post}' , [postController::class , 'destroy'])->name('posts.destroy');
+
+    Route ::get('/posts/{post}/edit' , [postController::class , 'edit'])->name('posts.edit');
+
+    Route::post('/posts/{post}' , [postController::class , 'update'])->name('posts.update');
+});
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
