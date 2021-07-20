@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\postController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/posts' , [postController::class , 'index'])->name('posts.index');
+
+Route::get('/posts/{post}' , [postController::class , 'show'])->name('posts.show');
+
+Route::post('/posts' , [postController::class , 'store'])->name('posts.store');

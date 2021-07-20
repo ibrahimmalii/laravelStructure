@@ -12,7 +12,7 @@ index
 @endsection
 
 <!-- this is second section we need to pass it  -->
-@section('content')
+<div class="container">
 <center>
     <a href="{{route('posts.create')}}" class="btn btn-primary mt-5 w-50">Add New Post</a>
 </center>
@@ -50,7 +50,7 @@ index
         </div>
         </td>
         </tr>
-        @endforeach
+        </div>
         <!-- to display pagination arrows -->
         <!-- {{$allPostsData->links()}} -->
     </tbody>
