@@ -77,7 +77,10 @@ Route::group(['middleware'=> 'auth'], function(){
 
 
 
-
+// this is for authontication
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
