@@ -59,7 +59,11 @@
 
                                 <a  href="/auth/redirect" class="btn bg-danger text-warning">
                                     {{ __('sign in with github') }}
-</a>
+                                </a>
+
+                                <a  href="/auth/redirect/google" class="btn bg-warning text-light">
+                                    {{ __('sign in with google') }}
+                                </a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
