@@ -11,6 +11,7 @@
 index
 @endsection
 
+@section('content')
 <!-- this is second section we need to pass it  -->
 <div class="container">
 <center>
@@ -27,6 +28,7 @@ index
         <th scope="col">Actions</th>
         </tr>
     </thead>
+
     <tbody>
         @foreach($allPostsData as $post)
         <tr>
@@ -54,5 +56,7 @@ index
         <!-- to display pagination arrows -->
         <!-- {{$allPostsData->links()}} -->
     </tbody>
+    @endforeach
 </table>
 @endsection
+
