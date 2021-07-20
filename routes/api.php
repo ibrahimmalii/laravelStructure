@@ -24,14 +24,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //to authonticate with token => auth:sanctum
 Route::group(['middleware' => 'auth:sanctum'] , function(){
+    Route::get('/posts', [postController::class , 'index'])->name('posts.index');
 
-Route::get('/posts' , [postController::class , 'index'])->name('posts.index');
+    Route::get('/posts/{post}', [postController::class , 'show'])->name('posts.show');
 
-Route::get('/posts/{post}' , [postController::class , 'show'])->name('posts.show');
-
-Route::post('/posts' , [postController::class , 'store'])->name('posts.store');
-
-]);
+    Route::post('/posts', [postController::class , 'store'])->name('posts.store');
+});
 
 // for token with
 Route::post('/sanctum/token', function (Request $request) {

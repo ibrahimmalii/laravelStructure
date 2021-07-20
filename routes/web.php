@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\postController;
-use App\Http\Controllers\testController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +81,19 @@ Route::group(['middleware'=> 'auth'], function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// this is for social login into github
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+
+    $user = Socialite::driver('github')->user();
+    @dd($user);
+    // $user->token
+});
 
 
 
