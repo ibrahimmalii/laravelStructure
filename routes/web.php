@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\PostController;
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\imagesController;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +133,16 @@ Route::get('/auth/callback', function () {
     // $user->getEmail();
     // $user->getAvatar();
 });
+
+
+
+// this is for caching
+Route::get('/cache', function () {
+    return Cache::get('key');
+});
+
+
+
 
 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Http\Requests\storePostRequest;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -14,10 +15,12 @@ class PostController extends Controller
     {
         // $allPostsData = Post::all();
         $allPostsData = Post::paginate(5);
+        $allPostedDeleted = Post::all();
+        // $restoredData = $allPostedDeleted->restore();
 
         // $allPostsData = Post::pagination(4);
         // @dd($allPostsData);
-        return view("posts.index" , ['allPostsData'=>$allPostsData]); // == posts/index
+        return view("posts.index" , ['allPostsData'=>$allPostsData ]); // == posts/index
     }
 
     // protected function serializeDate(DateTimeInterface $date)
@@ -88,9 +91,11 @@ class PostController extends Controller
     }
 
 
-    public function destroy()
+    public function destroy($id)
     {
-        Post::table('users')->where('id', 9)->delete();
+        // Post::where('id', $id)->delete();
+        $post = Post::find($id);
+        $post->delete();
         return redirect()->route('posts.index');
     }
 
@@ -115,6 +120,21 @@ class PostController extends Controller
         ]);
         // $postUpdated->save();
         return redirect()->route('posts.index');
+    }
+
+
+
+    // for test chaching
+    public function testBasicExample()
+    {
+        Cache::shouldReceive('get')
+            ->with('key')
+            ->andReturn('value');
+
+        $response = $this->get('/cache');
+
+        $response->assertSee('value');
+        @dd($response);
     }
 
 }

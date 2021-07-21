@@ -47,7 +47,11 @@ index
             <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
             </div>
             <div class="col-lg-4 col-md-12 col-12">
-            <a href="{{route('posts.destroy' , ['post'=>$post->id])}}" class="btn btn-danger mx-1">Delete</a>
+                <form method="post" action="{{route('posts.destroy' , ['post'=>$post->id])}}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger mx-1">Delete</button>
+                </form>
             </div>
         </div>
         </td>
@@ -57,6 +61,5 @@ index
         <!-- {{$allPostsData->links()}} -->
     </tbody>
     @endforeach
-</table>
 @endsection
 
