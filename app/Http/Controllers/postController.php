@@ -20,6 +20,11 @@ class postController extends Controller
         return view("posts.index" , ['allPostsData'=>$allPostsData]); // == posts/index
     }
 
+    // protected function serializeDate(DateTimeInterface $date)
+    //     {
+    //         return $date->format('Y-m-d');
+    //     }
+
     // public function show($postId)
     public function show($id)
     {

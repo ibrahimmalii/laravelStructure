@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\postController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\imagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,12 @@ Route::get('/', function () {
 
     // $ibrhim = 'ali';
     // dd($ibrhim); // stop execution and show details for this thing
+    // @dd(imagesController::class);
     return view('welcome');
 
 });
+
+Route::get('/alaa' , [imagesController::class , 'show']);
 
 
 // Route::get(uri : '/lab-one', action : function () {

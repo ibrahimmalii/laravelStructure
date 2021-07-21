@@ -25,7 +25,7 @@ class storePostRequest extends FormRequest
     {
         return [
             'title'=>['required' , 'min:5' , 'max:20'],
-            'description'=>['required' , 'min:5' , 'max:20'],
+            'description'=>['required' , 'min:20' , 'max:100'],
             'createdBy'=>['required'],
         ];
     }
@@ -36,7 +36,8 @@ class storePostRequest extends FormRequest
         return [
                 //to override error messages
                 'title.required'=>'you need to write something here',
-                'title.min'=>'you need to write more than three char'
+                'title.min'=>'you need to write more than thi char',
+                'description.min'=>'you need to write more description'
             ];
     }
 

@@ -4,7 +4,7 @@
 create
 @endsection
 
-
+@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -17,11 +17,9 @@ create
 
 <!-- Create Post Form -->
 
-@section('content')
-
 <form class="mt-5" action="{{route('posts.index')}}" method="post">
 <!-- we need to write it after any post form  -->
-@csrf;
+@csrf
 
   <div  class="form-group">
     <label for="titlePost" " class="h4 text-primary">Title</label>
