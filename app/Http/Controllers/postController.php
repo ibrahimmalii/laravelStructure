@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Http\Requests\storePostRequest;
 
-class postController extends Controller
+class PostController extends Controller
 {
     public function index ()
     {
