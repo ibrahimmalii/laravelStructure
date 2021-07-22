@@ -41,9 +41,7 @@ create
     @enderror
     <select class="form-control mt-3" name="createdBy">
 
-      @foreach($users as $user)
-        <option value="{{$user->id}}">{{$user->name}}</option>
-      @endforeach
+        <option value="{{auth()->user()->id}}">{{auth()->user()->name}}</option>
 
     </select>
   <button type="submit" class="btn btn-primary mt-3">Add Your Post</button>

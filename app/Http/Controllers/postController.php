@@ -44,9 +44,10 @@ class PostController extends Controller
 
     public function create()
     {
-        $users = User::all();
+        // $users = User::all();
 
-        return view ('posts.create' , ['users'=>$users]);
+        // return view ('posts.create' , ['user'=>$users]);
+        return view ('posts.create');
     }
 
     // public function store(request $requestObj)
