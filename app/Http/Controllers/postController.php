@@ -16,7 +16,8 @@ class PostController extends Controller
         // $allPostsData = Post::all();
 
         //to reduce query request in debugger we need to use (with(['any thing we call in DB query']))
-        $allPostsData = Post::with(['user'])->paginate(5);
+        // $allPostsData = Post::orderBy('created_at' , 'desc')->with(['user'])->paginate(5);
+        $allPostsData = Post::latest()->with(['user'])->paginate(5);
         // $allPostedDeleted = Post::all();
         // $restoredData = $allPostedDeleted->restore();
 

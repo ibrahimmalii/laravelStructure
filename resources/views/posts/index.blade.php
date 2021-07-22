@@ -45,19 +45,23 @@ index
                 <div class="col-lg-4 col-md-6 col-12" >
                 <a href="{{route('posts.show' , ['post'=>$post->id])}}" class="btn btn-secondary mx-1">View</a>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12" >
-                <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
-                </div>
-                <div class="col-lg-4 col-md-12 col-12">
-                    <!-- we need to check if user logged is delete or who -->
-                    @if($post->ownedBy(auth()->user()))
+
+                <!-- we need to check who is logged  -->
+                @if($post->ownedBy(auth()->user()))
+
+                    <div class="col-lg-4 col-md-6 col-12" >
+                    <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-12">
                         <form method="post" action="{{route('posts.destroy' , ['post'=>$post->id])}}">
                             @csrf
-                            @method('delete')
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1">Delete</button>
                         </form>
-                    @endif
-                </div>
+                    </div>
+
+                @endif
+
             </div>
             </td>
             </tr>
