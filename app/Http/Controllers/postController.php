@@ -88,7 +88,8 @@ class PostController extends Controller
         //now we add data into database;
 
         return redirect()->route('posts.index');
-    }
+
+    }//end of store method
 
 
     public function destroy($id)

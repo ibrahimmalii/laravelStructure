@@ -61,17 +61,9 @@ class StudentController extends Controller
 
 
         if ($validator->passes()) {
-
-
             // Store Data in DATABASE from HERE
-
-
             return response()->json(['success'=>'Added new records.']);
-
-
-
         }
-
 
         return response()->json(['error'=>$validator->errors()]);
 

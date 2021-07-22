@@ -5,7 +5,9 @@ create
 @endsection
 
 @section('content')
-@if ($errors->any())
+
+<!-- to show message errors or we can use $message like below  -->
+<!-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -13,7 +15,7 @@ create
             @endforeach
         </ul>
     </div>
-@endif
+@endif -->
 
 <!-- Create Post Form -->
 
@@ -24,11 +26,20 @@ create
   <div  class="form-group">
     <label for="titlePost" " class="h4 text-primary">Title</label>
     <input type="text" name="title" placeholder="insert title of post" class="form-control">
+    @error('title')
+        <div class="text-danger">
+            <span>{{$message}}</span>
+        </div>
+    @enderror
   </div>
-  <label for="titlePost" " class="h4 text-primary">Description</label>
-  <textarea class="form-control mb-3" name="description" placeholder="write what you want" style=" resize:none;"></textarea>
-
-    <select class="form-control" name="createdBy">
+  <label for="description" class="h4 text-primary">Description</label>
+  <textarea class="form-control" name="description" placeholder="write what you want" style=" resize:none;"></textarea>
+  @error('title')
+        <div class="text-danger">
+            <span>{{$message}}</span>
+        </div>
+    @enderror
+    <select class="form-control mt-3" name="createdBy">
 
       @foreach($users as $user)
         <option value="{{$user->id}}">{{$user->name}}</option>
