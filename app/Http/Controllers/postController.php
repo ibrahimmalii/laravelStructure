@@ -97,7 +97,8 @@ class PostController extends Controller
         // Post::where('id', $id)->delete();
         $post = Post::find($id);
         $post->delete();
-        return redirect()->route('posts.index');
+        // return redirect()->route('posts.index'); //or we can use ==> back();
+        return back();
     }
 
     public function edit($id)
