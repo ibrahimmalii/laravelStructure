@@ -5,6 +5,7 @@ use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\PostController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +141,14 @@ Route::get('/auth/callback', function () {
 Route::get('/cache', function () {
     return Cache::get('key');
 });
+
+
+
+
+// how to use ajax request
+Route::get('ajax/request', [StudentController::class, 'ajaxRequest'])->name('ajax.request');
+
+Route::post('ajax/request/store', [StudentController::class, 'ajaxRequestStore'])->name('ajax.request.store');
 
 
 

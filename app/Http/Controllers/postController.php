@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         // $allPostsData = Post::all();
         $allPostsData = Post::paginate(5);
-        $allPostedDeleted = Post::all();
+        // $allPostedDeleted = Post::all();
         // $restoredData = $allPostedDeleted->restore();
 
         // $allPostsData = Post::pagination(4);
@@ -136,5 +136,6 @@ class PostController extends Controller
         $response->assertSee('value');
         @dd($response);
     }
+
 
 }
