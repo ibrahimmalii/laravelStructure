@@ -21,10 +21,11 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function ownedBy(User $user)
-    {
-        return $user->id == $this->user_id;
-    }
+    // we will take this to separate file (PostPolicy)
+    // public function ownedBy(User $user)
+    // {
+    //     return $user->id == $this->user_id;
+    // }
 
 
 }

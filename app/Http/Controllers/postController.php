@@ -95,10 +95,13 @@ class PostController extends Controller
     }//end of store method
 
 
-    public function destroy($id)
+    // public function destroy($id)
+    public function destroy(Post $post)
     {
         // Post::where('id', $id)->delete();
-        $post = Post::find($id);
+        // $post = Post::find($id);
+
+        $this->authorize('change' , $post);
         $post->delete();
         // return redirect()->route('posts.index'); //or we can use ==> back();
         return back();
