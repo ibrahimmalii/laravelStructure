@@ -47,7 +47,7 @@ index
                 </div>
 
                 <!-- we need to check who is logged  -->
-                <!-- or we can use policy direct in separate file  -->
+                <!-- or we can use policy direct in separate file in post policy  -->
                 @can('change' , $post)
                     <div class="col-lg-4 col-md-6 col-12" >
                     <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
