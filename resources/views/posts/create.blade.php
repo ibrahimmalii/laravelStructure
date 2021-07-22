@@ -25,7 +25,7 @@ create
 
   <div  class="form-group">
     <label for="titlePost" " class="h4 text-primary">Title</label>
-    <input type="text" name="title" placeholder="insert title of post" class="form-control">
+    <input type="text" name="title" value="{{old('title')}}" placeholder="insert title of post" class="form-control">
     @error('title')
         <div class="text-danger">
             <span>{{$message}}</span>
@@ -33,7 +33,7 @@ create
     @enderror
   </div>
   <label for="description" class="h4 text-primary">Description</label>
-  <textarea class="form-control" name="description" placeholder="write what you want" style=" resize:none;"></textarea>
+  <textarea class="form-control" name="description"  placeholder="write what you want" style=" resize:none;"></textarea>
   @error('title')
         <div class="text-danger">
             <span>{{$message}}</span>
