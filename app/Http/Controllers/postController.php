@@ -14,7 +14,9 @@ class PostController extends Controller
     public function index ()
     {
         // $allPostsData = Post::all();
-        $allPostsData = Post::paginate(5);
+
+        //to reduce query request in debugger we need to use (with(['any thing we call in DB query']))
+        $allPostsData = Post::with(['user'])->paginate(5);
         // $allPostedDeleted = Post::all();
         // $restoredData = $allPostedDeleted->restore();
 
@@ -101,7 +103,8 @@ class PostController extends Controller
         return back();
     }
 
-    public function edit($id)
+    // public function edit($id)
+    public function edit(Post $post)
     {
         //this is manual method for update
         // $post = Post::find($id);
@@ -110,7 +113,8 @@ class PostController extends Controller
         // @dd($post);
 
         //second method
-        $post = Post::find($id);
+        // $post = Post::find($id); // if we get with id but we can get it directly from constructor
+        // @dd($post);
         return view('posts.edit' , ['post'=>$post]);
     }
 

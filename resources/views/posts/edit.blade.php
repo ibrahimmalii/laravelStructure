@@ -10,16 +10,24 @@ create
 <!-- we need to write it after any post form  -->
 @csrf
 
-<p class="h3 text-center mb-3 text-warning">Edit Your Post From Here</p>
+<p class="h3 text-center text-warning">Edit Your Post From Here</p>
   <div  class="form-group">
     <label for="titlePost" class="h4 text-danger">Title</label>
     <input type="text" name="title" value="{{$post->title}}" placeholder="insert title of post" class="form-control">
+    @error('title')
+      <span class="text-danger">{{$message}}</span>
+    @enderror
   </div>
 
-  <label for="titlePost" class="h4 text-danger">Description</label>
-  <textarea class="form-control mb-3" value="" name="description" placeholder="write what you want" style=" resize:none;">{{$post->description}}</textarea>
 
-  <select class="form-control" name="createdBy">
+  <label for="titlePost" class="h4 mt-3 text-danger">Description</label>
+  <textarea class="form-control" value="" name="description" placeholder="write what you want" style=" resize:none;">{{$post->description}}</textarea>
+  @error('description')
+    <div>
+      <span class="text-danger">{{$message}}</span>
+    </div>
+  @enderror
+  <select class="form-control mt-3" name="createdBy">
       <option value="{{$post->user_id}}">{{$post->user->name}}</option>
   </select>
 
