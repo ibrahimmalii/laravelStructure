@@ -49,11 +49,14 @@ index
                 <a href="{{route('posts.edit' , ['post'=>$post->id])}}" class="btn btn-warning mx-1">Edit</a>
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
-                    <form method="post" action="{{route('posts.destroy' , ['post'=>$post->id])}}">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger mx-1">Delete</button>
-                    </form>
+                    <!-- we need to check if user logged is delete or who -->
+                    @if($post->ownedBy(auth()->user()))
+                        <form method="post" action="{{route('posts.destroy' , ['post'=>$post->id])}}">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger mx-1">Delete</button>
+                        </form>
+                    @endif
                 </div>
             </div>
             </td>
