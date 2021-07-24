@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Http\Requests\storePostRequest;
 use Illuminate\Support\Facades\Cache;
+
 
 class PostController extends Controller
 {
@@ -53,7 +53,7 @@ class PostController extends Controller
     // public function store(request $requestObj)
     public function store(storePostRequest $requestObj)
     {
-
+        // @dd($requestObj);
         // we need to get all data we need to store
         // $requestData = request()->all();
         // dd($requestData); //== dd($requestObj)
@@ -70,9 +70,10 @@ class PostController extends Controller
 
         // ],[
         //     //to override error messages
-        //     'title.required'=>'you need to write something here',
-        //     'title.min'=>'you need to write more than three char'
+            // 'title.required'=>'you need to write something here',
+            // 'title.min'=>'you need to write more than three char'
         // ]);
+
 
 
         // equal insert into
@@ -82,12 +83,10 @@ class PostController extends Controller
             // 'description' => $requestData['description'],
             // 'user_id' => $requestData['createdBy'],
 
-
-
-
             'title' => $requestObj->title,
             'description' => $requestObj->description,
             'user_id' => $requestObj->createdBy,
+
         ]);
         //now we add data into database;
 

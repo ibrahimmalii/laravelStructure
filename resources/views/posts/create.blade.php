@@ -16,6 +16,9 @@ create
         </ul>
     </div>
 @endif -->
+<div class="text-center">
+    <p class="h1 text-danger">Make An Attractive Post</p>
+</div>
 
 <!-- Create Post Form -->
 

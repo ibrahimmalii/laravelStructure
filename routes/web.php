@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\StudentController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,46 +95,54 @@ Route::get('/auth/redirect', function () {
 });
 
 Route::get('/auth/callback', function () {
-    return "error";
+    // @dd('error');
     $user = Socialite::driver('github')->user();
-    // @dd($user);
-    // $user->token
+    @dd($user);
+
+
+    // User::create([
+    //     'email'=>$user->email,
+    //     'remember_token'=>$user->token,
+    //     'name'=>$user->nickname,
+    // ]);
+    // return redirect()->route('posts.index');
 });
 
 
 // this is for social login into google
-Route::get('/auth/redirect/google', function () {
-    return Socialite::driver('google')->redirect();
-});
+// Route::get('/auth/redirect/google', function () {
+//     return Socialite::driver('google')->redirect();
+// });
 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
-});
+// Route::get('/auth/callback', function () {
+//     $user = Socialite::driver('google')->user();
+//     @dd($user);
+// });
 
 
 //to store data comes from social media accounts
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
+// Route::get('/auth/callback', function () {
+//     $user = Socialite::driver('github')->user();
 
-    // OAuth 2.0 providers...
-    $token = $user->token;
-    $refreshToken = $user->refreshToken;
-    $expiresIn = $user->expiresIn;
+//     // OAuth 2.0 providers...
+//     $token = $user->token;
+//     $refreshToken = $user->refreshToken;
+//     $expiresIn = $user->expiresIn;
 
-    $user = Socialite::driver('github')->userFromToken($token);
-    // @dd($user);
+//     $user = Socialite::driver('github')->userFromToken($token);
+//     // @dd($user);
 
-    // OAuth 1.0 providers...
-    // $token = $user->token;
-    // $tokenSecret = $user->tokenSecret;
+//     // OAuth 1.0 providers...
+//     // $token = $user->token;
+//     // $tokenSecret = $user->tokenSecret;
 
-    // All providers...
-    // $user->getId();
-    // $user->getNickname();
-    // $user->getName();
-    // $user->getEmail();
-    // $user->getAvatar();
-});
+//     // All providers...
+//     // $user->getId();
+//     // $user->getNickname();
+//     // $user->getName();
+//     // $user->getEmail();
+//     // $user->getAvatar();
+// });
 
 
 
