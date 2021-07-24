@@ -77,7 +77,7 @@ Route::group(['middleware'=> 'auth'], function(){
 
     Route ::get('/posts/{post}/edit' , [PostController::class , 'edit'])->name('posts.edit');
 
-    Route::post('/posts/{post}' , [PostController::class , 'update'])->name('posts.update');
+    Route::put('/posts/{post}' , [PostController::class , 'update'])->name('posts.update');
 });
 
 
@@ -95,7 +95,6 @@ Route::get('/auth/redirect', function () {
 });
 
 Route::get('/auth/callback', function () {
-    // @dd('error');
     $user = Socialite::driver('github')->user();
     @dd($user);
 
@@ -110,14 +109,14 @@ Route::get('/auth/callback', function () {
 
 
 // this is for social login into google
-// Route::get('/auth/redirect/google', function () {
-//     return Socialite::driver('google')->redirect();
-// });
+Route::get('/auth/redirect/google', function () {
+    return Socialite::driver('google')->redirect();
+});
 
-// Route::get('/auth/callback', function () {
-//     $user = Socialite::driver('google')->user();
-//     @dd($user);
-// });
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+    @dd($user);
+});
 
 
 //to store data comes from social media accounts

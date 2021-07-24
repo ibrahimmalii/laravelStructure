@@ -9,6 +9,7 @@ create
 <form class="mt-5" action="{{route('posts.update' , ['post'=>$post->id])}}" method="post">
 <!-- we need to write it after any post form  -->
 @csrf
+@method('PUT')
 
 <p class="h3 text-center text-warning">Edit Your Post From Here</p>
   <div  class="form-group">

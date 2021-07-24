@@ -22,7 +22,7 @@ create
 
 <!-- Create Post Form -->
 
-<form class="mt-5" action="{{route('posts.index')}}" method="post">
+<form class="mt-5" action="{{route('posts.store')}}" method="post">
 <!-- we need to write it after any post form  -->
 @csrf
 

@@ -16,7 +16,6 @@ class Post extends Model
         'title',
         'description',
         'user_id',
-        'slug',
     ];
 
     public function user(){
@@ -33,7 +32,7 @@ class Post extends Model
     {
         return [
             'slug' => [
-                'source' => ''
+                'source' => 'title'
             ]
         ];
     }

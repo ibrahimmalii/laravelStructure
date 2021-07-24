@@ -86,7 +86,6 @@ class PostController extends Controller
             'title' => $requestObj->title,
             'description' => $requestObj->description,
             'user_id' => $requestObj->createdBy,
-
         ]);
         //now we add data into database;
 
