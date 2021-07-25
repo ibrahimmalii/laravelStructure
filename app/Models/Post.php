@@ -16,6 +16,7 @@ class Post extends Model
         'title',
         'description',
         'user_id',
+        'image'
     ];
 
     public function user(){
@@ -31,7 +32,7 @@ class Post extends Model
     public function sluggable(): array
     {
         return [
-            'slug' => [
+            'slug_title' => [
                 'source' => 'title'
             ]
         ];

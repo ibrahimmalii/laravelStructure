@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //to authonticate with token => auth:sanctum
-Route::group(['middleware' => 'auth:sanctum'] , function(){
+Route::group(['middleware' => 'auth'] , function(){
     Route::get('/posts', [postController::class , 'index'])->name('posts.index');
 
     Route::get('/posts/{post}', [postController::class , 'show'])->name('posts.show');

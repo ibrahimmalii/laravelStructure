@@ -53,7 +53,7 @@ class PostController extends Controller
     // public function store(request $requestObj)
     public function store(storePostRequest $requestObj)
     {
-        // @dd($requestObj);
+        // @dd($requestObj->image);
         // we need to get all data we need to store
         // $requestData = request()->all();
         // dd($requestData); //== dd($requestObj)
@@ -75,6 +75,10 @@ class PostController extends Controller
         // ]);
 
 
+        $image = time().'.'.$requestObj->image->extension();
+        $requestObj->image->move(public_path('uploads'), $image);
+
+        // @dd(public_path('uploads'));
 
         // equal insert into
         Post::create([
@@ -86,6 +90,7 @@ class PostController extends Controller
             'title' => $requestObj->title,
             'description' => $requestObj->description,
             'user_id' => $requestObj->createdBy,
+            'image' => public_path('uploads')."/".$image,
         ]);
         //now we add data into database;
 

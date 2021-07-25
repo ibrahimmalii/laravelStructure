@@ -23,6 +23,7 @@ index
         <th scope="col">ID</th>
         <th scope="col">Owner</th>
         <th scope="col">Title</th>
+        <th scope="col">Title-sluged</th>
         <th scope="col">Description</th>
         <th scope="col">Created At</th>
         <th scope="col">Actions</th>
@@ -37,6 +38,7 @@ index
             <th scope="row">{{$post->id}}</th>
             <td>{{$post->user ? $post->user->name : 'not found'}}</td>
             <td>{{$post->title}}</td>
+            <td>{{$post->slug_title}}</td>
             <td>{{$post->description}}</td>
             <td>{{$post->created_at->toDateString()}}</td>
             <td>
