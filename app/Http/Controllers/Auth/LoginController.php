@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -37,4 +41,53 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //login with social media
+
+    public function redirectToGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function handleGithubCallback()
+    {
+        $user = Socialite::driver('github')->stateless()->user();
+        $this->registerOrLoginUser($user);
+        return redirect()->route('home');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->stateless()->user();
+        $this->registerOrLoginUser($user);
+        return redirect()->route('home');
+    }
+
+    protected function registerOrLoginUser($data)
+    {
+        $user = User::where('email','=',$data->email)->first();
+        @dd($user);
+        if (!$user)
+        {
+            $user = new User();
+            $user->name = $data->name ?? '';
+            $user->email = $data->email;
+            $user->password="";
+            $user->provided_id = $data->id;
+            $user->avatar = $data->avatar;
+            $user->save();
+        }
+
+        Auth::login($user);
+    }
+
+
+
+
+
 }

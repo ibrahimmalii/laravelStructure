@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\labOneController; //== require labOneController
 use App\Http\Controllers\PostController;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\StudentController;
-use App\Models\User;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -90,33 +91,41 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // this is for social login into github
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
+// Route::get('/auth/redirect', function () {
+//     return Socialite::driver('github')->redirect();
+// });
 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
-    @dd($user);
+// Route::get('/auth/callback', function () {
+//     $user = Socialite::driver('github')->user();
+//     @dd($user);
 
 
-    // User::create([
-    //     'email'=>$user->email,
-    //     'remember_token'=>$user->token,
-    //     'name'=>$user->nickname,
-    // ]);
-    // return redirect()->route('posts.index');
-});
+//     // User::create([
+//     //     'email'=>$user->email,
+//     //     'remember_token'=>$user->token,
+//     //     'name'=>$user->nickname,
+//     // ]);
+//     // return redirect()->route('posts.index');
+// });
+
+//how to login with social media
+Route::get('/auth/github/redirect', [LoginController::class, 'redirectToGithub'])->name('login.github');
+Route::get('/auth/github/callback', [LoginController::class, 'handleGithubCallback']);
+
+Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
 
 
 // this is for social login into google
-Route::get('/auth/redirect/google', function () {
-    return Socialite::driver('google')->redirect();
-});
+// Route::get('/auth/redirect/google', function () {
+//     return Socialite::driver('google')->redirect();
+// });
 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
-    @dd($user);
-});
+// Route::get('/auth/callback', function () {
+//     $user = Socialite::driver('google')->user();
+//     @dd($user);
+// });
 
 
 //to store data comes from social media accounts

@@ -57,11 +57,11 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a  href="/auth/redirect" class="btn bg-danger text-warning">
+                                <a  href="/auth/github/redirect" class="btn bg-danger text-warning">
                                     {{ __('sign in with github') }}
                                 </a>
 
-                                <a  href="/auth/redirect/google" class="btn bg-warning text-light">
+                                <a  href="/auth/google/redirect" class="btn bg-warning text-light">
                                     {{ __('sign in with google') }}
                                 </a>
 
