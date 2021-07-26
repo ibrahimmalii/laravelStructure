@@ -58,7 +58,22 @@ index
                         <form method="post" action="{{route('posts.destroy' , ['post'=>$post->id])}}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger mx-1">Delete</button>
+
+                            <button id="warning" class="btn btn-danger mx-1">Delete</button>
+                            <script>
+                                let warning = document.getElementById('warning');
+                                warning.addEventListener('click' , function(e){
+                                    if(!confirm('Are You Sure'))
+                                    {
+                                        e.preventDefault;
+                                    }
+                                    else
+                                    {
+                                        warning.setAttribute('type' , 'submit')
+                                    }
+
+                                })
+                            </script>
                         </form>
                     </div>
                 @endcan

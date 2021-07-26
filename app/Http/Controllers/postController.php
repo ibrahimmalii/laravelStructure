@@ -53,7 +53,7 @@ class PostController extends Controller
     // public function store(request $requestObj)
     public function store(storePostRequest $requestObj)
     {
-        // @dd($requestObj->image);
+        @dd($requestObj->image);
         // we need to get all data we need to store
         // $requestData = request()->all();
         // dd($requestData); //== dd($requestObj)
@@ -75,6 +75,7 @@ class PostController extends Controller
         // ]);
 
 
+        //this about how to save images
         $image = time().'.'.$requestObj->image->extension();
         $requestObj->image->move(public_path('uploads'), $image);
 
@@ -127,12 +128,15 @@ class PostController extends Controller
     }
 
 
-    public function update(storePostRequest $request ,$id){
+    public function update(Request $request ,$id){
+        // @dd($request);
         $postUpdated = Post::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
+            'image'=>$request->image,
         ]);
         // $postUpdated->save();
+        // @dd($postUpdated);
         return redirect()->route('posts.index');
     }
 

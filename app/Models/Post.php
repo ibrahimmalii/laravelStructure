@@ -9,8 +9,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory , Sluggable ,SoftDeletes ;
-
+    use HasFactory , Sluggable  ;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -37,6 +37,12 @@ class Post extends Model
             ]
         ];
     }
+
+    //this is for eager loading
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
 
 }

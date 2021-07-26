@@ -44,7 +44,7 @@ class storePostRequest extends FormRequest
                 'title.min'=>'you need to write more than thi char',
                 'description.min'=>'you need to write more description',
                 'image.required'=>'please insert your image first',
-                // 'image.Rule'=>'you have to insert only image'
+                'image.Rule'=>'you have to insert only image'
             ];
     }
 

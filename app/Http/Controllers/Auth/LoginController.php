@@ -71,7 +71,6 @@ class LoginController extends Controller
     protected function registerOrLoginUser($data)
     {
         $user = User::where('email','=',$data->email)->first();
-        @dd($user);
         if (!$user)
         {
             $user = new User();

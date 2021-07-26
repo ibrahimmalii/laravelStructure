@@ -109,9 +109,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 //how to login with social media
+//1- Github.com
 Route::get('/auth/github/redirect', [LoginController::class, 'redirectToGithub'])->name('login.github');
 Route::get('/auth/github/callback', [LoginController::class, 'handleGithubCallback']);
 
+//1- Google.com
 Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
